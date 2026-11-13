@@ -1,0 +1,5 @@
+# Direct Python dependencies; exact experimental versions were not established.
+numpy
+pandas
+openpyxl
+sentence-transformers
