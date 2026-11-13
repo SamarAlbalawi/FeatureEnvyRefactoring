@@ -1,4 +1,4 @@
-# Dependency-Augmented RAG for Feature Envy Refactoring
+# Dependency-Aware RAG for Feature Envy Refactoring
 
 This research implementation investigates whether adding repository dependency
 evidence to retrieved context helps a language model refactor C# Feature Envy
@@ -44,7 +44,7 @@ important qualification of the evidence.
 - `csharp-analysis/`: C# Roslyn analyzer, corpus and dependency extraction.
 - `tests/`: focused Python unit tests.
 - `requirements.txt`: direct Python dependencies, not an experiment lockfile.
-- [PRIVACY_REVIEW.md](PRIVACY_REVIEW.md): privacy and publication limitations.
+- `EVALUATION_EVIDENCE.csv`: patch-level evaluation results for 66 applied patches.
 
 ## Using the code
 
@@ -68,22 +68,15 @@ Given a compatible Roslyn analysis JSON file, evaluate the target with:
 ```powershell
 python src\feature_envy_metrics.py --analysis input\analysis.json --output output\metrics.json
 ```
-
-These are examples, not evidence that the full experiment is reproducible from
-this release. C# projects and pinned repository revisions, case data, original
-model outputs, patches, evaluation evidence and exact software environments are
-not included. Full independent verification would require separately obtaining
-appropriately licensed inputs and reviewed evidence. Do not treat generated
-outputs as anonymized: code can write absolute paths, repository content,
-prompts, and responses, which should be reviewed before sharing.
+The release includes aggregate results and patch-level evaluation
+classifications for 66 applied patches. However, original C# repositories,
+case data, raw model outputs, full patch artifacts, detailed Roslyn evidence,
+and the exact experimental environment are not included. Therefore,
+the complete experiment cannot be independently reproduced from this
+release alone.
 
 The client expects an API credential through an environment variable and makes
 live requests only when explicitly enabled. Never commit credentials or raw
 request/response artifacts. Running the live pipeline can incur cost and send
 repository content to a third party.
 
-## Publication status
-
-See [PRIVACY_REVIEW.md](PRIVACY_REVIEW.md). A heuristic scan cannot prove the
-absence of sensitive information. Publication requires human privacy,
-authorship/disclosure, rights and scientific-evidence review.
